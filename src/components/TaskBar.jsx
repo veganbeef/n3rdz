@@ -1,12 +1,7 @@
-import {useContext, useState} from 'react';
-import { Logo } from '@react95/icons';
+import { useContext, useState } from 'react';
 import windowsLogo from '@react95/icons/png/Shell3240_32x32_4.png';
-import infoSign from '@react95/icons/png/Winhlp324000_32x32_4.png';
 import infoBook from '@react95/icons/png/Winhlp324001_32x32_4.png';
-import infoPage from '@react95/icons/png/Winhlp324002_32x32_4.png';
 import gearPanel from '@react95/icons/png/Shell3222_32x32_4.png';
-import myComputer from '@react95/icons/png/Shell3216_32x32_4.png'
-import lockIcon from '@react95/icons/png/Lock_32x32_4.png'
 import programsIcon from '@react95/icons/png/Shell3237_32x32_4.png';
 import computerOff from '@react95/icons/png/Shell3228_32x32_4.png';
 
@@ -15,14 +10,13 @@ import {
 	Button,
 	Divider,
 	List,
-	ListItem, Panel,
-	TextField,
+	ListItem,
 	Toolbar
 } from 'react95';
 import Clock from './Clock';
-import {StoreContext} from '../Store';
+import { StoreContext } from '../Store';
 import OpenWindows from './OpenWindows';
-import {useAddress, useDisconnect} from '@thirdweb-dev/react';
+import { useAddress, useDisconnect } from '@thirdweb-dev/react';
 
 function TaskBar() {
 	const [open, setOpen] = useState(false); // TODO: move this to StoreContext
@@ -60,13 +54,7 @@ function TaskBar() {
 							active={open}
 							style={{ fontWeight: 'bold' }}
 						>
-							{/*<img*/}
-							{/*	src={}*/}
-							{/*	alt='react95 logo'*/}
-							{/*	style={{ height: '20px', marginRight: 4 }}*/}
-							{/*/>*/}
-							{/*<Logo height="30" width="30" variant='32x32_4' />*/}
-							<img src={windowsLogo} height="28" width="28" />
+							<img src={windowsLogo} height='28' width='28' alt='windows logo icon' />
 							<p style={{ marginLeft: '0.25rem' }}>Start</p>
 						</Button>
 						{open && (
@@ -80,20 +68,20 @@ function TaskBar() {
 								onClick={() => setOpen(false)}
 							>
 								<ListItem onClick={() => menuClick('Project Info')}>
-									<img src={infoBook} width="28" />
+									<img src={infoBook} width='28' alt='windows info icon' />
 									<span style={{paddingLeft: '1rem'}}>Project Info</span>
 								</ListItem>
 								<ListItem onClick={() => menuClick('Members Only')}>
-									<img src={programsIcon} width="28" />
+									<img src={programsIcon} width='28' alt='windows programs icon' />
 									<span style={{paddingLeft: '1rem'}}>Members Only</span>
 								</ListItem>
 								<ListItem onClick={() => menuClick('Wallet Connector')}>
-									<img src={gearPanel} width="28" />
+									<img src={gearPanel} width='28' alt='windows settings icon' />
 									<span style={{paddingLeft: '1rem'}}>Wallet Connector</span>
 								</ListItem>
 								<Divider />
 								<ListItem disabled={!address} onClick={disconnect}>
-									<img src={computerOff} width="28" />
+									<img src={computerOff} width='28' alt='windows computer off icon' />
 					                <span style={{paddingLeft: '1rem'}}>Disconnect</span>
 								</ListItem>
 							</List>

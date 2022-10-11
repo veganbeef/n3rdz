@@ -1,6 +1,6 @@
-import {useContext, useState} from 'react';
-import {StoreContext} from '../Store';
-import {Button, Cutout, Fieldset, Tab, TabBody, Tabs, Window, WindowContent, WindowHeader} from 'react95';
+import { useContext, useState } from 'react';
+import { StoreContext } from '../Store';
+import { Button, Cutout, Fieldset, Tab, TabBody, Tabs, Window, WindowContent, WindowHeader } from 'react95';
 import Draggable from 'react-draggable';
 import roadToZ from '../assets/road_to_z.png';
 
@@ -28,7 +28,7 @@ const ProjectInfoModal = () => {
 			display: state.projectInfoModal ? 'block' : 'none',
 			zIndex: state.projectInfoZIndex
 		}}>
-			<WindowHeader style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+			<WindowHeader active={state.activeWindow === 'Project Info'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 				<span>Project Info</span>
 				<Button onClick={closeModal}>x</Button>
 			</WindowHeader>

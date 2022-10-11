@@ -1,8 +1,8 @@
-import {useContext} from 'react';
-import {StoreContext} from '../Store';
-import {Button, Fieldset, Window, WindowContent, WindowHeader} from 'react95';
+import { useContext } from 'react';
+import { StoreContext } from '../Store';
+import { Button, Fieldset, Window, WindowContent, WindowHeader } from 'react95';
 import Draggable from 'react-draggable';
-import {useAddress, useContract, useOwnedNFTs} from '@thirdweb-dev/react';
+import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
 
 const MembersOnlyModal = () => {
 	const [state, dispatch] = useContext(StoreContext);
@@ -25,27 +25,27 @@ const MembersOnlyModal = () => {
 	return (
 		<Draggable defaultPosition={{ x: 100, y: 50 }} onStart={bringToFront}>
 			<Window style={{
-				width: '30%',
+				width: '400px',
 				position: 'absolute',
 				display: state.membersOnlyModal ? 'block' : 'none',
 				zIndex: state.membersOnlyZIndex
 			}}>
-				<WindowHeader style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+				<WindowHeader active={state.activeWindow === 'Members Only'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 					<span>Members Only</span>
 					<Button onClick={closeModal}>x</Button>
 				</WindowHeader>
 				<WindowContent>
 					{!address && (
-						<div>Connect a wallet containing N3RDs to see members-only content!</div>
+						<div>Connect a wallet containing N3RDS to see members-only content!</div>
 					)}
 					{address && isLoading && (
-						<div>Loading your N3RDs...</div>
+						<div>Loading your N3RDS...</div>
 					)}
 					{address && !isLoading && error && (
-						<div>Encountered an unexpected error while loading your N3RDs.</div>
+						<div>Encountered an unexpected error while loading your N3RDS.</div>
 					)}
 					{address && !isLoading && !error && (
-						<Fieldset label={`You own ${ownedN3rds.length} N3RDs!`}>
+						<Fieldset label={`You own ${ownedN3rds.length} N3RDS!`}>
 							{ownedN3rds.map(n3rd => {
 								return (<div>{n3rd.metadata.name}</div>);
 							})}

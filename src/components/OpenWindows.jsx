@@ -1,6 +1,6 @@
-import {useContext} from 'react';
-import {StoreContext} from '../Store';
-import {Button} from 'react95';
+import { useContext } from 'react';
+import { StoreContext } from '../Store';
+import { Button } from 'react95';
 
 const OpenWindows = () => {
 	const [state, dispatch] = useContext(StoreContext);

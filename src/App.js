@@ -1,7 +1,7 @@
 import React from 'react';
-import { createGlobalStyle, ThemeProvider, useTheme } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import { styleReset, List, ListItem, Divider } from 'react95';
+import { styleReset } from 'react95';
 // pick a theme of your choice
 import original from 'react95/dist/themes/original';
 // original Windows95 font (optionally)
@@ -52,7 +52,7 @@ const App = () => (
                     transform: 'translate(-50%,-50%)',
                     color: 'white',
                     fontSize: 'x-large'
-                }}>Hello, fellow N3RDs 🖖</div>
+                }}>Hello, fellow N3RDS 🖖</div>
             </Main>
           </ThemeProvider>
         </div>

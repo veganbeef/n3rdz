@@ -1,6 +1,6 @@
-import {useContext, useState} from 'react';
-import {StoreContext} from '../Store';
-import {Button, Fieldset, Panel, Select, Window, WindowContent, WindowHeader} from 'react95';
+import { useContext, useState } from 'react';
+import { StoreContext } from '../Store';
+import { Button, Fieldset, Panel, Select, Window, WindowContent, WindowHeader } from 'react95';
 import Draggable from 'react-draggable';
 import {
 	useAddress,
@@ -66,7 +66,7 @@ const WalletConnectorModal = () => {
 				display: state.walletConnectorModal ? 'block' : 'none',
 				zIndex: state.walletConnectorZIndex
 			}}>
-				<WindowHeader style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+				<WindowHeader active={state.activeWindow === 'Wallet Connector'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 					<span>Wallet Connector</span>
 					<Button onClick={closeModal}>x</Button>
 				</WindowHeader>
