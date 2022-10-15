@@ -9,11 +9,12 @@ import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
 import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
 
 import TaskBar from './components/TaskBar';
-import Main from './components/Main';
+import Desktop from './components/Desktop';
 import Store from './Store';
 import ProjectInfoModal from './components/ProjectInfoModal';
 import MembersOnlyModal from './components/MembersOnlyModal';
 import WalletConnectorModal from './components/WalletConnectorModal';
+import BootLoader from './components/BootLoader';
 
 const GlobalStyles = createGlobalStyle`
   ${styleReset}
@@ -35,28 +36,34 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-const App = () => (
-    <Store>
-        <div style={{height: '100%', display: 'flex', flexDirection: 'column'}}>
-          <GlobalStyles />
-          <ThemeProvider theme={original}>
-            <TaskBar />
-            <Main>
-                <ProjectInfoModal />
-                <MembersOnlyModal />
-                <WalletConnectorModal />
-                <div style={{
-                    position: 'fixed',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%,-50%)',
-                    color: 'white',
-                    fontSize: 'x-large'
-                }}>Hello, fellow N3RDS 🖖</div>
-            </Main>
-          </ThemeProvider>
-        </div>
-    </Store>
-);
+const App = () => {
+    const [bootLoader, setBootLoader] = React.useState(true);
+
+    return (<Store>
+        <GlobalStyles/>
+        <ThemeProvider theme={original}>
+            <div style={bootLoader ? {height: '100%', display: 'flex', flexDirection: 'column'} : {display: 'none'}}>
+                <BootLoader setBootLoader={setBootLoader} />
+            </div>
+            <div style={bootLoader ? {display: 'none'} : {height: '100%', display: 'flex', flexDirection: 'column'}}>
+                <TaskBar/>
+                <Desktop>
+                    <ProjectInfoModal/>
+                    <MembersOnlyModal/>
+                    <WalletConnectorModal/>
+                    <div style={{
+                        position: 'fixed',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%,-50%)',
+                        color: 'white',
+                        fontSize: 'x-large'
+                    }}>Hello, fellow N3RDS 🖖
+                    </div>
+                </Desktop>
+            </div>
+        </ThemeProvider>
+    </Store>);
+};
 
 export default App;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import React from 'react';
 
-const Main = ({ children }) => {
+const Desktop = ({ children }) => {
 
 	const Wrapper = styled.main`
 		background: ${({ theme }) => theme.desktopBackground};
@@ -17,4 +17,4 @@ const Main = ({ children }) => {
 	);
 }
 
-export default Main;
+export default Desktop;

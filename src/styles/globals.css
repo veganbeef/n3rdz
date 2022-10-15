@@ -24,3 +24,8 @@ a {
     background: #0f1318;
   }
 }
+
+@font-face {
+  font-family: 'november';
+  src: local('november'), url(../assets/november.ttf) format('truetype');
+}
