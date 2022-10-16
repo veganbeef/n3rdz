@@ -15,6 +15,7 @@ import ProjectInfoModal from './components/ProjectInfoModal';
 import MembersOnlyModal from './components/MembersOnlyModal';
 import WalletConnectorModal from './components/WalletConnectorModal';
 import BootLoader from './components/BootLoader';
+import NerdLoader from './components/NerdLoader';
 
 const GlobalStyles = createGlobalStyle`
   ${styleReset}
@@ -38,15 +39,20 @@ const GlobalStyles = createGlobalStyle`
 
 const App = () => {
     const [bootLoader, setBootLoader] = React.useState(true);
+    const [nerdLoader, setNerdLoader] = React.useState(false);
+
+    const switchLoaders = () => {
+        setBootLoader(false);
+        setNerdLoader(true);
+        setTimeout(() => setNerdLoader(false), 1000);
+    };
 
     return (<Store>
         <GlobalStyles/>
         <ThemeProvider theme={original}>
-            <div style={bootLoader ? {height: '100%', display: 'flex', flexDirection: 'column'} : {display: 'none'}}>
-                <BootLoader setBootLoader={setBootLoader} />
-            </div>
+            <BootLoader hidden={!bootLoader} switchLoaders={switchLoaders} />
             <div style={bootLoader ? {display: 'none'} : {height: '100%', display: 'flex', flexDirection: 'column'}}>
-                <TaskBar/>
+                <TaskBar hidden={bootLoader || nerdLoader}/>
                 <Desktop>
                     <ProjectInfoModal/>
                     <MembersOnlyModal/>
@@ -60,6 +66,7 @@ const App = () => {
                         fontSize: 'x-large'
                     }}>Hello, fellow N3RDS 🖖
                     </div>
+                    <NerdLoader nerdLoader={nerdLoader}  />
                 </Desktop>
             </div>
         </ThemeProvider>

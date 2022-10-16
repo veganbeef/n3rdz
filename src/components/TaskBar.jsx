@@ -3,6 +3,9 @@ import windowsLogo from '@react95/icons/png/Shell3240_32x32_4.png';
 import infoBook from '@react95/icons/png/Winhlp324001_32x32_4.png';
 import gearPanel from '@react95/icons/png/Shell3222_32x32_4.png';
 import programsIcon from '@react95/icons/png/Shell3237_32x32_4.png';
+import doorIcon from '@react95/icons/png/User7_32x32_4.png';
+import appleDoorEmoji from '../assets/appleDoorEmoji.png';
+import twitterDoorEmoji from '../assets/twitterDoorEmoji.png';
 import computerOff from '@react95/icons/png/Shell3228_32x32_4.png';
 
 import {
@@ -18,7 +21,7 @@ import { StoreContext } from '../Store';
 import OpenWindows from './OpenWindows';
 import { useAddress, useDisconnect } from '@thirdweb-dev/react';
 
-function TaskBar() {
+function TaskBar({hidden}) {
 	const [open, setOpen] = useState(false); // TODO: move this to StoreContext
 	const [state, dispatch] = useContext(StoreContext);
 	const address = useAddress();
@@ -45,7 +48,7 @@ function TaskBar() {
 	}
 
 	return (
-		<AppBar style={{position: 'inherit'}}>
+		<AppBar style={{position: 'inherit', display: `${hidden ? 'none' : 'flex'}`}}>
 			<Toolbar style={{ justifyContent: 'space-between' }}>
 				<div style={{ display: 'flex' }}>
 					<div style={{ position: 'relative', display: 'inline-block', height: '36px', marginRight: '4px' }}>
@@ -72,8 +75,16 @@ function TaskBar() {
 									<span style={{paddingLeft: '1rem'}}>Project Info</span>
 								</ListItem>
 								<ListItem onClick={() => menuClick('Members Only')}>
-									<img src={programsIcon} width='28' alt='windows programs icon' />
-									<span style={{paddingLeft: '1rem'}}>Members Only</span>
+									<img src={doorIcon} width='28' alt='windows door icon' />
+									<span style={{paddingLeft: '1rem'}}>The Nerdcave 1</span>
+								</ListItem>
+								<ListItem onClick={() => menuClick('Members Only')}>
+									<img src={appleDoorEmoji} width='28' alt='apple door emoji' />
+									<span style={{paddingLeft: '1rem'}}>The Nerdcave 2</span>
+								</ListItem>
+								<ListItem onClick={() => menuClick('Members Only')}>
+									<img src={twitterDoorEmoji} width='28' alt='twitter door emoji' />
+									<span style={{paddingLeft: '1rem'}}>The Nerdcave 3</span>
 								</ListItem>
 								<ListItem onClick={() => menuClick('Wallet Connector')}>
 									<img src={gearPanel} width='28' alt='windows settings icon' />

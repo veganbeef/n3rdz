@@ -2,7 +2,7 @@ import { useContext, useState } from 'react';
 import { StoreContext } from '../Store';
 import { Button, Cutout, Fieldset, Tab, TabBody, Tabs, Window, WindowContent, WindowHeader } from 'react95';
 import Draggable from 'react-draggable';
-import roadToZ from '../assets/road_to_z.png';
+import roadToZ from '../assets/roadToZ.png';
 
 const ProjectInfoModal = () => {
 	const [state, dispatch] = useContext(StoreContext);
