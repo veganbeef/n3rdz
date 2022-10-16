@@ -11,11 +11,11 @@ import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
 import TaskBar from './components/TaskBar';
 import Desktop from './components/Desktop';
 import Store from './Store';
-import ProjectInfoModal from './components/ProjectInfoModal';
-import MembersOnlyModal from './components/MembersOnlyModal';
+import NerdcaveModal from './components/NerdcaveModal';
 import WalletConnectorModal from './components/WalletConnectorModal';
 import BootLoader from './components/BootLoader';
 import NerdLoader from './components/NerdLoader';
+import ProjectInfoWizard from './components/ProjectInfoWizard';
 
 const GlobalStyles = createGlobalStyle`
   ${styleReset}
@@ -54,9 +54,9 @@ const App = () => {
             <div style={bootLoader ? {display: 'none'} : {height: '100%', display: 'flex', flexDirection: 'column'}}>
                 <TaskBar hidden={bootLoader || nerdLoader}/>
                 <Desktop>
-                    <ProjectInfoModal/>
-                    <MembersOnlyModal/>
-                    <WalletConnectorModal/>
+                    <ProjectInfoWizard />
+                    <NerdcaveModal />
+                    <WalletConnectorModal />
                     <div style={{
                         position: 'fixed',
                         top: '50%',

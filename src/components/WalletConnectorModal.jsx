@@ -75,14 +75,14 @@ const WalletConnectorModal = () => {
 						<Select disabled={address} options={walletOptions} onChange={walletSelected} width={180} />
 					</Fieldset>
 					<div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px', marginBottom: '20px' }}>
-						<Button disabled={address} onClick={connectWallet} style={{ marginRight: '8px' }}>Connect</Button>
-						<Button disabled={!address} onClick={disconnectWallet}>Disconnect</Button>
+						<Button disabled={address} onClick={connectWallet} style={{ marginRight: '10px' }} className='windows-button'>Connect</Button>
+						<Button disabled={!address} onClick={disconnectWallet} className='windows-button'>Disconnect</Button>
 					</div>
 					<Fieldset label="Wallet information">
 						Address
-						<Panel variant="well" style={{padding: '0.1rem 0.25rem', width: '100%' }}>{address || '...'}</Panel>
+						<Panel variant="well" className='windows-panel'>{address || '...'}</Panel>
 						<div style={{ marginTop: '20px' }}>Balance</div>
-						<Panel variant="well" style={{ padding: '0.1rem 0.25rem', width: '100%' }}>{balanceQuery.isLoading ? '...' : `${balanceQuery.data?.displayValue} ${balanceQuery.data?.symbol}`}</Panel>
+						<Panel variant="well" className='windows-panel'>{balanceQuery.isLoading ? '...' : `${balanceQuery.data?.displayValue} ${balanceQuery.data?.symbol}`}</Panel>
 					</Fieldset>
 				</WindowContent>
 			</Window>

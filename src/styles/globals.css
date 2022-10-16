@@ -29,3 +29,17 @@ a {
   font-family: 'november';
   src: local('november'), url(../assets/november.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'nimbus';
+  src: local('nimbus'), url(../assets/NimbusRomNo9L-Med.otf) format('opentype');
+}
+
+.windows-button {
+  width: 120px !important;
+}
+
+.windows-panel {
+  padding: 0.1rem 0.25rem;
+  width: 100%;
+}

@@ -4,14 +4,14 @@ import { Button, Fieldset, Window, WindowContent, WindowHeader } from 'react95';
 import Draggable from 'react-draggable';
 import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
 
-const MembersOnlyModal = () => {
+const NerdcaveModal = () => {
 	const [state, dispatch] = useContext(StoreContext);
 	const address = useAddress();
 	const { contract: n3rdsContract } = useContract('0xA29F6F5C7bE206425a28F8188784233E9D75dEee');
 	const { data: ownedN3rds, isLoading, error } = useOwnedNFTs(n3rdsContract, address);
 
 	const closeModal = () => {
-		dispatch({ type: 'SET_MEMBERS_ONLY_MODAL', payload: false });
+		dispatch({ type: 'SET_NERDCAVE_MODAL', payload: false });
 		console.log('isLoading?: ', isLoading);
 		console.log('error?: ', error);
 		console.log('ownedN3rds?: ', ownedN3rds);
@@ -19,7 +19,7 @@ const MembersOnlyModal = () => {
 	};
 
 	const bringToFront = () => {
-		dispatch({ type: 'BRING_MODAL_TO_FRONT', payload: 'Members Only'});
+		dispatch({ type: 'BRING_MODAL_TO_FRONT', payload: 'The Nerdcave'});
 	};
 
 	return (
@@ -27,11 +27,11 @@ const MembersOnlyModal = () => {
 			<Window style={{
 				width: '400px',
 				position: 'absolute',
-				display: state.membersOnlyModal ? 'block' : 'none',
-				zIndex: state.membersOnlyZIndex
+				display: state.nerdcaveModal ? 'block' : 'none',
+				zIndex: state.nerdcaveZIndex
 			}}>
-				<WindowHeader active={state.activeWindow === 'Members Only'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-					<span>Members Only</span>
+				<WindowHeader active={state.activeWindow === 'The Nerdcave'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+					<span>The Nerdcave</span>
 					<Button onClick={closeModal}>x</Button>
 				</WindowHeader>
 				<WindowContent>
@@ -57,4 +57,4 @@ const MembersOnlyModal = () => {
 	);
 };
 
-export default MembersOnlyModal;
+export default NerdcaveModal;

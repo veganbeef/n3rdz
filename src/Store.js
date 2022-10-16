@@ -3,10 +3,10 @@ import { createContext, useReducer } from 'react';
 export const StoreContext = createContext({});
 
 const initialState = {
-	projectInfoModal: false,
+	projectInfoWizard: false,
 	projectInfoZIndex: 0,
-	membersOnlyModal: false,
-	membersOnlyZIndex: 0,
+	nerdcaveModal: false,
+	nerdcaveZIndex: 0,
 	walletConnectorModal: false,
 	walletConnectorZIndex: 0,
 	topZIndex: 0,
@@ -20,8 +20,8 @@ function bringModalToFront(label, state) {
 	switch (label) {
 		case 'Project Info':
 			return { ...state, projectInfoZIndex: newTopZIndex };
-		case 'Members Only':
-			return { ...state, membersOnlyZIndex: newTopZIndex };
+		case 'The Nerdcave':
+			return { ...state, nerdcaveZIndex: newTopZIndex };
 		case 'Wallet Connector':
 			return { ...state, walletConnectorZIndex: newTopZIndex };
 		default:
@@ -42,9 +42,9 @@ function reducer(state, action) {
 	const currentOpenWindows = state.openWindows;
 	switch (action.type) {
 		case 'SET_PROJECT_INFO_MODAL':
-			return { ...state, projectInfoModal: action.payload, openWindows: updateOpenWindows(currentOpenWindows, 'Project Info', action.payload) };
-		case 'SET_MEMBERS_ONLY_MODAL':
-			return { ...state, membersOnlyModal: action.payload, openWindows: updateOpenWindows(currentOpenWindows, 'Members Only', action.payload) };
+			return { ...state, projectInfoWizard: action.payload, openWindows: updateOpenWindows(currentOpenWindows, 'Project Info', action.payload) };
+		case 'SET_NERDCAVE_MODAL':
+			return { ...state, nerdcaveModal: action.payload, openWindows: updateOpenWindows(currentOpenWindows, 'The Nerdcave', action.payload) };
 		case 'SET_WALLET_CONNECTOR_MODAL':
 			return { ...state, walletConnectorModal: action.payload, openWindows: updateOpenWindows(currentOpenWindows, 'Wallet Connector', action.payload) };
 		case 'BRING_MODAL_TO_FRONT':

@@ -2,10 +2,7 @@ import { useContext, useState } from 'react';
 import windowsLogo from '@react95/icons/png/Shell3240_32x32_4.png';
 import infoBook from '@react95/icons/png/Winhlp324001_32x32_4.png';
 import gearPanel from '@react95/icons/png/Shell3222_32x32_4.png';
-import programsIcon from '@react95/icons/png/Shell3237_32x32_4.png';
-import doorIcon from '@react95/icons/png/User7_32x32_4.png';
 import appleDoorEmoji from '../assets/appleDoorEmoji.png';
-import twitterDoorEmoji from '../assets/twitterDoorEmoji.png';
 import computerOff from '@react95/icons/png/Shell3228_32x32_4.png';
 
 import {
@@ -34,8 +31,8 @@ function TaskBar({hidden}) {
 				case 'Project Info':
 					dispatch({ type: 'SET_PROJECT_INFO_MODAL', payload: true });
 					break;
-				case 'Members Only':
-					dispatch({ type: 'SET_MEMBERS_ONLY_MODAL', payload: true });
+				case 'The Nerdcave':
+					dispatch({ type: 'SET_NERDCAVE_MODAL', payload: true });
 					break;
 				case 'Wallet Connector':
 					dispatch({ type: 'SET_WALLET_CONNECTOR_MODAL', payload: true });
@@ -74,17 +71,9 @@ function TaskBar({hidden}) {
 									<img src={infoBook} width='28' alt='windows info icon' />
 									<span style={{paddingLeft: '1rem'}}>Project Info</span>
 								</ListItem>
-								<ListItem onClick={() => menuClick('Members Only')}>
-									<img src={doorIcon} width='28' alt='windows door icon' />
-									<span style={{paddingLeft: '1rem'}}>The Nerdcave 1</span>
-								</ListItem>
-								<ListItem onClick={() => menuClick('Members Only')}>
+								<ListItem onClick={() => menuClick('The Nerdcave')}>
 									<img src={appleDoorEmoji} width='28' alt='apple door emoji' />
-									<span style={{paddingLeft: '1rem'}}>The Nerdcave 2</span>
-								</ListItem>
-								<ListItem onClick={() => menuClick('Members Only')}>
-									<img src={twitterDoorEmoji} width='28' alt='twitter door emoji' />
-									<span style={{paddingLeft: '1rem'}}>The Nerdcave 3</span>
+									<span style={{paddingLeft: '1rem'}}>The Nerdcave</span>
 								</ListItem>
 								<ListItem onClick={() => menuClick('Wallet Connector')}>
 									<img src={gearPanel} width='28' alt='windows settings icon' />
