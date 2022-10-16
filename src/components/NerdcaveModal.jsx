@@ -44,13 +44,14 @@ const NerdcaveModal = () => {
 					{address && !isLoading && error && (
 						<div>Encountered an unexpected error while loading your N3RDS.</div>
 					)}
-					{address && !isLoading && !error && (
-						<Fieldset label={`You own ${ownedN3rds.length} N3RDS!`}>
+					{address && !isLoading && !error && (<>
+						<div>Welcome back ser! All systems of the nerdcave are working at full capacity!</div>
+						<Fieldset style={{ marginTop: '20px' }} label={`You own ${ownedN3rds.length} N3RDS!`}>
 							{ownedN3rds.map(n3rd => {
 								return (<div>{n3rd.metadata.name}</div>);
 							})}
 						</Fieldset>
-					)}
+					</>)}
 				</WindowContent>
 			</Window>
 		</Draggable>

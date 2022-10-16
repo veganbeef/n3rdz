@@ -6,7 +6,6 @@ const BootLoader = ({switchLoaders, hidden}) => {
 	const [nerdCount, setNerdCount] = useState(0);
 
 	const handleKeyPress = (event) => {
-		console.log('key press');
 		if (event.key === 'Enter' && bootPhase > 2) {
 			window.removeEventListener('keypress', handleKeyPress);
 			switchLoaders();
