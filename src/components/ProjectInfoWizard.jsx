@@ -29,7 +29,7 @@ const ProjectInfoModal = () => {
 	};
 
 	return (
-		<Draggable defaultPosition={{ x: 600, y: 25 }} onStart={bringToFront}>
+		<Draggable defaultPosition={{ x: 400, y: 25 }} onStart={bringToFront}>
 			<Window style={{
 				width: '700px',
 				position: 'absolute',
