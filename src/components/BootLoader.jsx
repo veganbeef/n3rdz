@@ -65,7 +65,7 @@ const BootLoader = ({switchLoaders, hidden}) => {
 					<div>Copyright (C) Road To Z Corp. 1995-2022. All rights reserved.</div>
 					<div>Drive N3RDZ: = Driver N3RD2001 unit 0</div>
 					<br />
-					<div>Initializing D3RD main console.</div>
+					<div>Initializing N3RD main console.</div>
 					<div>This may take a few minutes...{bootPhase > 1 ? '(lol jk)' : (<Cursor />)}</div>
 				</>) : (<></>)}
 				<br />
@@ -79,7 +79,6 @@ const BootLoader = ({switchLoaders, hidden}) => {
 			</div>
 			<div>
 				<div>N3RDZ created by <a href='https://twitter.com/n3rdfather'>@n3rdfather</a> / <a href='https://twitter.com/_veganbeef'>@_veganbeef</a></div>
-				<div>{window.navigator.userAgent}</div>
 			</div>
 		</div>
 	);
