@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import Cursor from './Cursor';
 
 const BootLoader = ({switchLoaders, hidden}) => {
@@ -6,7 +6,7 @@ const BootLoader = ({switchLoaders, hidden}) => {
 	const [nerdCount, setNerdCount] = useState(0);
 
 	const handleKeyPress = (event) => {
-		if (event.key === 'Enter' && bootPhase > 2) {
+		if (event.key === 'Enter' && bootPhase > 1) {
 			window.removeEventListener('keypress', handleKeyPress);
 			switchLoaders();
 		}
@@ -29,17 +29,14 @@ const BootLoader = ({switchLoaders, hidden}) => {
 		if (bootPhase === 1) {
 			setTimeout(() => {
 				setBootPhase(2);
-				setTimeout(() => {
-					setBootPhase(3);
-					if (window.innerWidth <= 768) {
-						setTimeout(() => {
-							switchLoaders();
-						}, 1000);
-					}
-				}, 600);
+				if (window.innerWidth <= 768) {
+					setTimeout(() => {
+						switchLoaders();
+					}, 1000);
+				}
 			}, 1000);
 		}
-	}, [bootPhase]);
+	}, [bootPhase, switchLoaders]);
 
 	return (
 		<div style={{
@@ -65,11 +62,10 @@ const BootLoader = ({switchLoaders, hidden}) => {
 					<div>Copyright (C) Road To Z Corp. 1995-2022. All rights reserved.</div>
 					<div>Drive N3RDZ: = Driver N3RD2001 unit 0</div>
 					<br />
-					<div>Initializing N3RD main console.</div>
-					<div>This may take a few minutes...{bootPhase > 1 ? '(lol jk)' : (<Cursor />)}</div>
+					<div>Initializing N3RD main console...</div>
 				</>) : (<></>)}
 				<br />
-				{bootPhase > 2 ? (<>
+				{bootPhase > 1 ? (<>
 					<div>N3RDZ:\&gt; GM_GN<Cursor /></div>
 					<br />
 					<br />
@@ -78,7 +74,7 @@ const BootLoader = ({switchLoaders, hidden}) => {
 				</>) : (<></>)}
 			</div>
 			<div>
-				<div>N3RDZ created by <a href='https://twitter.com/n3rdfather'>@n3rdfather</a> / <a href='https://twitter.com/_veganbeef'>@_veganbeef</a></div>
+				<div>N3RDZ created by <a href='https://twitter.com/n3rdfather'>@N3RDfather</a> / <a href='https://twitter.com/_veganbeef'>@_veganbeef</a></div>
 			</div>
 		</div>
 	);

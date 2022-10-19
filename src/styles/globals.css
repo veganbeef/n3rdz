@@ -43,3 +43,26 @@ a {
   padding: 0.1rem 0.25rem;
   width: 100%;
 }
+
+.blue-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fixed-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

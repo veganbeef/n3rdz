@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import React from 'react';
+import { StarField } from 'starfield-react';
 
-const Desktop = ({ children }) => {
+const Desktop = ({ children, loading, showStarField }) => {
 
 	const Wrapper = styled.main`
 		background: ${({ theme }) => theme.desktopBackground};
@@ -12,7 +12,16 @@ const Desktop = ({ children }) => {
 
 	return (
 		<Wrapper>
+			{(!loading && showStarField) ? (
+				<StarField
+					width={window.innerWidth}
+					height={window.innerHeight - 48}
+					speed={6}
+					fps={24}
+				/>
+			) : (<></>)}
 			{children}
+			<div className='fixed-center' style={{ color: 'white', fontSize: 'x-large' }}>Mae g'ovannen, fellow N3RDS 🖖</div>
 		</Wrapper>
 	);
 }

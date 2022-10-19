@@ -11,8 +11,8 @@ import {
 	WindowHeader
 } from 'react95';
 import Draggable from 'react-draggable';
-import roadToZ from '../assets/roadToZ.png';
 import hardwareWizard from '../assets/hardwareWizard.png';
+import infoBook from '@react95/icons/png/Winhlp324001_32x32_4.png';
 import '../styles/ProjectInfoWizard.css';
 
 const ProjectInfoModal = () => {
@@ -36,37 +36,37 @@ const ProjectInfoModal = () => {
 				display: state.projectInfoWizard ? 'block' : 'none',
 				zIndex: state.projectInfoZIndex
 			}}>
-				<WindowHeader active={state.activeWindow === 'Project Info'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-					<span>Project Info</span>
+				<WindowHeader active={state.activeWindow === 'Project Info'} className='flex-center-between'>
+					<div className='flex-center'>
+						<img src={infoBook} width='21' alt='windows info icon' />
+						<span style={{ paddingLeft: '8px' }}>Project Info</span>
+					</div>
 				</WindowHeader>
 				<WindowContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
 					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 						<Panel variant="well" style={{ height: '390px' }}>
-							<img src={hardwareWizard} height="386" />
+							<img src={hardwareWizard} alt='windows hardware wizard stock art' height="386" />
 						</Panel>
 						<div style={{ minHeight: '360px', width: '420px' }}>
 							{currentPage === 0 && (<>
-								<div className='wizard-heading'>What are N3RDS?</div>
+								<div className='wizard-heading'>About N3RDS</div>
 								<Cutout style={{ height: '344px' }}>
 									<div>N3RDS is a passion project! It’s a collection of 2001 Fanboys JPGs. As Founders we love the idea of a community that forms around an NFT and shares a common set of beliefs and values such as supporting each other when it comes to WGMI! At the foundation of this project lies a simple truth: WE ARE NERDS!</div>
+									<br />
+									<div>Our NFT collection now embodies what we are, what we love - thus a passion project! We will always be  grown man-children and that is why we can make one promise: We will keep building the nerd-verse! The N3RD collection is our first step into this bigger world. We want to keep learning, We want to keep building and ultimately we want to represent the nerds of this space in this space! By buying into this collection, you are buying into our vision!</div>
 								</Cutout>
 							</>)}
 							{currentPage === 1 && (<>
-								<div className='wizard-heading'>Vision</div>
-								<div>N3RDS Project will center around its community! I'm building this collection first and foremost for its members and I'm envisioning a close-knit and exclusive community of support. After all, web3.0 is about connecting people. N3RDS will form the common ground of this connection. The passion we all share and that binds us together! This vision is going to manifest itself within the project!</div>
+								<div className='wizard-heading'>Team Bios</div>
+								<div><span style={{ fontWeight: 'bold' }}>N3rdfather:</span> I grew up in the developing years of the PC and the Internet. Its potential has amazed me ever since. Plus, I love everything geeky from Star Wars to The Lord of the Rings! My man cave is full of action figures, light sabers, DnD adventures and old retro video games.</div>
+								<br />
+								<div><span style={{ fontWeight: 'bold' }}>Veganbeef:</span> I've been a n3rd ever since reading Tolkein and Asimov as a kid! Fantasy, sci-fi, classical music, computer science -- my nerdiness runs deep! I'm a professional nerd as well, diving deep on new technologies like machine learning and blockchain engineering just for the sake of exploration.</div>
 							</>)}
 							{currentPage === 2 && (<>
-								<div className='wizard-heading'>Milestones</div>
-								<div>How do I want to make sure that N3RDS create value? Tbh, I can’t be sure of that! But what I can be sure of is that I’ll always try my best to succeed and put in my everything because I identify with what I do! Money is not the key factor of my motivation, it’s my belief in Blockchain Technology and being the biggest nerd myself! There are many thoughts I juggle around with such as MERCHANDISE, THE N3RD BASEMENT BAR, THE N3RDCAVE, THE PIXLTUBE but, imho, the first step into a wider range of possibilities will  be the reduction of the existing collection making the community even more exclusive. This thought has lead to the "Road to Z".</div>
-								<div style={{ marginTop: '20px' }}>
-									<a href={roadToZ} target='_blank' style={{ color: 'blue', textDecoration: 'underline' }}>Take a look yourself!</a>
-								</div>
-							</>)}
-							{currentPage === 3 && (<>
 								<div className='wizard-heading'>Disclosure</div>
-								<div style={{marginBottom: '20px'}}>I believe in transparency and honesty. Two values that are rarely found within the NFT space. I’ve been scammed and rugged and I know this can mean financial ruin to people! That is why I won’t ever make any empty promises that I can’t keep. For now, this project is a hobby of mine and I treat it like that. I work on it in my free time and I do almost everything by myself! I believe that with ambition and persistence you can come a long way. I don’t know where it will take me, but I’m ready for the journey. Will you come along?</div>
+								<div style={{marginBottom: '20px'}}>We believe in transparency and honesty. Two values that are rarely found within the NFT space. We won’t ever make any empty promises that we can’t keep. We believe that with ambition and persistence you can come a long way. Will you join us?</div>
 								<Fieldset label="What about the profits?">
-									<div>70% of all earnings will go back into building the project! A payment splitter has been added to the contract. Transparency is key!</div>
+									<div>70% of all earnings will go back into building the project!</div>
 								</Fieldset>
 							</>)}
 						</div>
@@ -75,8 +75,8 @@ const ProjectInfoModal = () => {
 						<Divider style={{ marginTop: '20px', marginBottom: '20px' }} />
 						<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
 							<Button disabled={currentPage === 0} onClick={() => setCurrentPage(currentPage - 1)} className='windows-button'>&lt;&ensp;Back</Button>
-							<Button disabled={currentPage === 3} onClick={() => setCurrentPage(currentPage + 1)} className='windows-button'>Next&ensp;&gt;</Button>
-							<Button onClick={closeModal} style={{ marginLeft: '10px' }} className='windows-button'>{currentPage === 3 ? 'Done' : 'Cancel'}</Button>
+							<Button disabled={currentPage === 2} onClick={() => setCurrentPage(currentPage + 1)} className='windows-button'>Next&ensp;&gt;</Button>
+							<Button onClick={closeModal} style={{ marginLeft: '10px' }} className='windows-button'>{currentPage === 2 ? 'Done' : 'Cancel'}</Button>
 						</div>
 					</div>
 				</WindowContent>

@@ -5,6 +5,8 @@ export const StoreContext = createContext({});
 const initialState = {
 	projectInfoWizard: false,
 	projectInfoZIndex: 0,
+	linksModal: false,
+	linksZIndex: 0,
 	nerdcaveModal: false,
 	nerdcaveZIndex: 0,
 	walletConnectorModal: false,
@@ -20,6 +22,8 @@ function bringModalToFront(label, state) {
 	switch (label) {
 		case 'Project Info':
 			return { ...state, projectInfoZIndex: newTopZIndex };
+		case 'Links':
+			return { ...state, linksZIndex: newTopZIndex };
 		case 'The Nerdcave':
 			return { ...state, nerdcaveZIndex: newTopZIndex };
 		case 'Wallet Connector':
@@ -43,6 +47,8 @@ function reducer(state, action) {
 	switch (action.type) {
 		case 'SET_PROJECT_INFO_MODAL':
 			return { ...state, projectInfoWizard: action.payload, openWindows: updateOpenWindows(currentOpenWindows, 'Project Info', action.payload) };
+		case 'SET_LINKS_MODAL':
+			return { ...state, linksModal: action.payload, openWindows: updateOpenWindows(currentOpenWindows, 'Links', action.payload) };
 		case 'SET_NERDCAVE_MODAL':
 			return { ...state, nerdcaveModal: action.payload, openWindows: updateOpenWindows(currentOpenWindows, 'The Nerdcave', action.payload) };
 		case 'SET_WALLET_CONNECTOR_MODAL':

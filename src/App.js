@@ -16,6 +16,7 @@ import WalletConnectorModal from './components/WalletConnectorModal';
 import BootLoader from './components/BootLoader';
 import NerdLoader from './components/NerdLoader';
 import ProjectInfoWizard from './components/ProjectInfoWizard';
+import LinksModal from './components/LinksModal';
 
 const GlobalStyles = createGlobalStyle`
   ${styleReset}
@@ -40,6 +41,7 @@ const GlobalStyles = createGlobalStyle`
 const App = () => {
     const [bootLoader, setBootLoader] = React.useState(true);
     const [nerdLoader, setNerdLoader] = React.useState(false);
+    const [showStarField, toggleStarField] = React.useState(false);
 
     const switchLoaders = () => {
         setBootLoader(false);
@@ -52,20 +54,12 @@ const App = () => {
         <ThemeProvider theme={original}>
             <BootLoader hidden={!bootLoader} switchLoaders={switchLoaders} />
             <div style={bootLoader ? {display: 'none'} : {height: '100%', display: 'flex', flexDirection: 'column'}}>
-                <TaskBar hidden={bootLoader || nerdLoader}/>
-                <Desktop>
+                <TaskBar loading={bootLoader || nerdLoader}/>
+                <Desktop loading={bootLoader || nerdLoader} showStarField={showStarField}>
                     <ProjectInfoWizard />
-                    <NerdcaveModal />
+                    <LinksModal />
+                    <NerdcaveModal loading={bootLoader || nerdLoader} toggleStarField={toggleStarField} />
                     <WalletConnectorModal />
-                    <div style={{
-                        position: 'fixed',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%,-50%)',
-                        color: 'white',
-                        fontSize: 'x-large'
-                    }}>Hello, fellow N3RDS 🖖
-                    </div>
                     <NerdLoader nerdLoader={nerdLoader}  />
                 </Desktop>
             </div>

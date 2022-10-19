@@ -10,6 +10,7 @@ import {
 	useMetamask,
 	useWalletConnect
 } from '@thirdweb-dev/react';
+import gearPanel from '@react95/icons/png/Shell3222_32x32_4.png';
 
 const WalletConnectorModal = () => {
 	const [state, dispatch] = useContext(StoreContext);
@@ -66,8 +67,11 @@ const WalletConnectorModal = () => {
 				display: state.walletConnectorModal ? 'block' : 'none',
 				zIndex: state.walletConnectorZIndex
 			}}>
-				<WindowHeader active={state.activeWindow === 'Wallet Connector'} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-					<span>Wallet Connector</span>
+				<WindowHeader active={state.activeWindow === 'Wallet Connector'} className='flex-center-between'>
+					<div className='flex-center'>
+						<img src={gearPanel} width='21' alt='windows settings icon' />
+						<span style={{ paddingLeft: '8px' }}>Wallet Connector</span>
+					</div>
 					<Button onClick={closeModal}>x</Button>
 				</WindowHeader>
 				<WindowContent>
