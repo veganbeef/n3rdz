@@ -9,9 +9,7 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 	const [state, dispatch] = useContext(StoreContext);
 	const address = useAddress();
 	const { contract: n3rdsContract } = useContract('0xA29F6F5C7bE206425a28F8188784233E9D75dEee');
-	const { contract: froodsContract } = useContract('0xE5B5a679F6766B705DDBa89d3b80b0cEeEce7c40');
-	const { data: ownedN3rds, isLoading: isN3rdsLoading, error: n3rdsError } = useOwnedNFTs(n3rdsContract, address);
-	const { data: ownedFroods, isLoading: isFroodsLoading, error: froodsError } = useOwnedNFTs(froodsContract, address);
+	const { data: ownedN3rds, isLoading, error } = useOwnedNFTs(n3rdsContract, address);
 
 	const closeModal = () => {
 		dispatch({ type: 'SET_NERDCAVE_MODAL', payload: false });
@@ -27,14 +25,14 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 	};
 
 	useEffect(() => {
-		if ((!loading) && ((ownedN3rds && ownedN3rds.length > 0) || (ownedFroods && ownedFroods.length > 0))) {
+		if ((!loading) && (ownedN3rds && ownedN3rds.length > 0)) {
 			toggleStarField(true);
 			dispatch({ type: 'BRING_MODAL_TO_FRONT', payload: 'The Nerdcave' });
 			dispatch({ type: 'SET_NERDCAVE_MODAL', payload: true });
 		} else {
 			toggleStarField(false);
 		}
-	}, [loading, ownedN3rds, ownedFroods, dispatch, toggleStarField]);
+	}, [loading, ownedN3rds, dispatch, toggleStarField]);
 
 	return (
 		<Draggable defaultPosition={{ x: 100, y: 50 }} onStart={bringToFront}>
@@ -55,51 +53,22 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 					{!address ? (
 						<div><span onClick={openWalletConnector} className='blue-link'>Connect a wallet</span> containing N3RDS to see members-only content!</div>
 					) : (<>
-						{((!isN3rdsLoading && ownedN3rds && ownedN3rds.length > 0) || (!isFroodsLoading && ownedFroods && ownedFroods.length > 0)) ? (
+						{(ownedN3rds && ownedN3rds.length > 0) ? (<>
 							<div>Welcome back ser! All systems of the nerdcave are working at full capacity!</div>
-						) : (<div>Connect a wallet containing N3RDS to see members-only content!</div>)}
-						<br />
-						<Fieldset label='N3RDS'>
-							{isN3rdsLoading ? (
+							<Fieldset style={{ marginTop: '20px' }} label={`You own ${ownedN3rds.length} N3RDS!`}>
+								{ownedN3rds.map(n3rd => {
+									return (<div>{n3rd.metadata.name}</div>);
+								})}
+							</Fieldset>
+						</>) : (isLoading ? (
 								<div>Loading your N3RDS...</div>
-							) : (<>
-								{n3rdsError ? (
+							) : (error ? (
 									<div>Encountered an unexpected error while loading your N3RDS.</div>
-								) : (<>
-									{ownedN3rds.length ? (<>
-										<div style={{ fontWeight: 'bold' }}>{`You own ${ownedN3rds.length} N3RDS!`}</div>
-										<ul>
-											{ownedN3rds.map(n3rd => {
-												return (<li>{n3rd.metadata.name}</li>);
-											})}
-										</ul>
-									</>) : (
-										<div>No N3RDS found in this wallet.</div>
-									)}
-								</>)}
-							</>)}
-						</Fieldset>
-						<br />
-						<Fieldset label='FROODS'>
-							{isFroodsLoading ? (
-								<div>Loading your FROODS...</div>
-							) : (<>
-								{froodsError ? (
-									<div>Encountered an unexpected error while loading your FROODS.</div>
-								) : (<>
-									{ownedFroods.length ? (<>
-										<div style={{ fontWeight: 'bold' }}>{`You own ${ownedFroods.length} FROODS!`}</div>
-										<ul>
-											{ownedFroods.map(frood => {
-												return (<li>{frood.metadata.name}</li>);
-											})}
-										</ul>
-									</>) : (
-										<div>No FROODS found in this wallet.</div>
-									)}
-								</>)}
-							</>)}
-						</Fieldset>
+								) : (
+									<div>No N3RDS found in this wallet.</div>
+								)
+							)
+						)}
 					</>)}
 				</WindowContent>
 			</Window>

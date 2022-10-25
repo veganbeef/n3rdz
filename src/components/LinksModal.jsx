@@ -18,7 +18,7 @@ const LinksModal = () => {
 	return (
 		<Draggable defaultPosition={{ x: 50, y: 200 }} onStart={bringToFront}>
 			<Window style={{
-				width: '250px',
+				width: '300px',
 				position: 'absolute',
 				display: state.linksModal ? 'block' : 'none',
 				zIndex: state.linksZIndex
@@ -39,11 +39,12 @@ const LinksModal = () => {
 						</ul>
 					</Fieldset>
 					<br />
-					<Fieldset label='OpenSea'>
+					<Fieldset label='Markets'>
 						<ul>
-							<li><a className='blue-link' href='https://opensea.io/collection/n3rds2001' target='_blank' rel='noreferrer'>N3RDS2001</a></li>
-							<li><a className='blue-link' href='https://opensea.io/collection/froods' target='_blank' rel='noreferrer'>FROODS</a></li>
-							<li><a className='blue-link' href='https://opensea.io/collection/doodles-fanarts' target='_blank' rel='noreferrer'>Doodles Fan Art</a></li>
+							<li><a className='blue-link' href='https://opensea.io/collection/n3rds2001' target='_blank' rel='noreferrer'>N3RDS2001 OpenSea</a></li>
+							{/*<li><a className='blue-link' href='https://opensea.io/collection/froods' target='_blank' rel='noreferrer'>FROODS</a></li>*/}
+							<li><a className='blue-link' href='https://opensea.io/collection/doodles-fanarts' target='_blank' rel='noreferrer'>Doodles Fan Art  OpenSea</a></li>
+							<li><a className='blue-link' href='https://foundation.app/@n3rd' target='_blank' rel='noreferrer'>N3RD Foundation</a></li>
 						</ul>
 					</Fieldset>
 				</WindowContent>

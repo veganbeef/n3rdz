@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { StoreContext } from '../Store';
 import {
+	Avatar,
 	Button,
 	Cutout,
 	Divider,
@@ -13,6 +14,8 @@ import {
 import Draggable from 'react-draggable';
 import hardwareWizard from '../assets/hardwareWizard.png';
 import infoBook from '@react95/icons/png/Winhlp324001_32x32_4.png';
+import n3rdfather from '../assets/n3rdfather.jpg';
+import veganbeef from '../assets/veganbeef.jpg';
 import '../styles/ProjectInfoWizard.css';
 
 const ProjectInfoModal = () => {
@@ -58,9 +61,20 @@ const ProjectInfoModal = () => {
 							</>)}
 							{currentPage === 1 && (<>
 								<div className='wizard-heading'>Team Bios</div>
-								<div><span style={{ fontWeight: 'bold' }}>N3rdfather:</span> I grew up in the developing years of the PC and the Internet. Its potential has amazed me ever since. Plus, I love everything geeky from Star Wars to The Lord of the Rings! My man cave is full of action figures, light sabers, DnD adventures and old retro video games.</div>
-								<br />
-								<div><span style={{ fontWeight: 'bold' }}>Veganbeef:</span> I've been a n3rd ever since reading Tolkein and Asimov as a kid! Fantasy, sci-fi, classical music, computer science -- my nerdiness runs deep! I'm a professional nerd as well, diving deep on new technologies like machine learning and blockchain engineering just for the sake of exploration.</div>
+								<Cutout style={{ height: '344px' }}>
+
+									<div className='flex-center-start'>
+										<Avatar size={50} src={n3rdfather} />
+										<a href='https://twitter.com/n3rdfather' className='black-link'>@n3rdfather</a>
+									</div>
+									<div>I grew up in the developing years of the PC and the Internet. Its potential has amazed me ever since. Plus, I love everything geeky from Star Wars to The Lord of the Rings! My man cave is full of action figures, light sabers, DnD adventures and old retro video games.</div>
+									<br />
+									<div className='flex-center-start'>
+										<Avatar size={50} src={veganbeef} />
+										<a href='https://twitter.com/_veganbeef' className='black-link'>@_veganbeef</a>
+									</div>
+									<div>I've been a n3rd ever since reading Tolkien and Asimov as a kid! Fantasy, sci-fi, classical music, computer science -- my nerdiness runs deep! I'm a professional nerd as well, diving deep on new technologies like machine learning and blockchain engineering just for the sake of exploration.</div>
+								</Cutout>
 							</>)}
 							{currentPage === 2 && (<>
 								<div className='wizard-heading'>Disclosure</div>

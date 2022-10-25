@@ -49,6 +49,16 @@ a {
   text-decoration: underline;
 }
 
+.black-link {
+  color: black;
+  font-weight: bold;
+  padding-left: 8px;
+}
+
+.black-link:hover {
+  text-decoration: underline;
+}
+
 .flex-center {
   display: flex;
   align-items: center;
@@ -58,6 +68,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.flex-center-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .fixed-center {
