@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { StoreContext } from '../Store';
-import { Button, Fieldset, Panel, Select, Window, WindowContent, WindowHeader } from 'react95';
+import { Button, Fieldset, Panel, Radio, Select, Window, WindowContent, WindowHeader } from 'react95';
 import Draggable from 'react-draggable';
 import {
 	useAddress,
@@ -21,11 +21,6 @@ const WalletConnectorModal = () => {
 	const disconnect = useDisconnect();
 	const address = useAddress();
 	const balanceQuery = useBalance();
-	const walletOptions = [
-		{ value: 1, label: 'Metamask' },
-		{ value: 2, label: 'Coinbase Wallet' },
-		{ value: 3, label: 'WalletConnect' },
-	];
 
 	const closeModal = () => {
 		dispatch({ type: 'SET_WALLET_CONNECTOR_MODAL', payload: false });
@@ -35,9 +30,9 @@ const WalletConnectorModal = () => {
 		dispatch({ type: 'BRING_MODAL_TO_FRONT', payload: 'Wallet Connector'});
 	};
 
-	const walletSelected = (evt, selection) => {
-		setSelectedWallet(selection.label);
-	};
+	const walletSelectedRadio = (evt) => {
+		setSelectedWallet(evt.target.value);
+	}
 
 	const connectWallet = () => {
 		let connectionFunction;
@@ -75,8 +70,12 @@ const WalletConnectorModal = () => {
 					<Button onClick={closeModal} onTouchEnd={closeModal}>x</Button>
 				</WindowHeader>
 				<WindowContent>
-					<Fieldset label="Select wallet type">
-						<Select disabled={address} options={walletOptions} onChange={walletSelected} width={180} />
+					<Fieldset label='Select wallet type'>
+						<div className='flex-column'>
+							<Radio disabled={address} checked={selectedWallet === 'Metamask'} onChange={walletSelectedRadio} value={'Metamask'} label={'Metamask'} name={'wallets'} />
+							<Radio disabled={address} checked={selectedWallet === 'Coinbase Wallet'} onChange={walletSelectedRadio} value={'Coinbase Wallet'} label={'Coinbase Wallet'} name={'wallets'} />
+							<Radio disabled={address} checked={selectedWallet === 'WalletConnect'} onChange={walletSelectedRadio} value={'WalletConnect'} label={'WalletConnect'} name={'wallets'} />
+						</div>
 					</Fieldset>
 					<div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px', marginBottom: '20px' }}>
 						<Button disabled={address} onClick={connectWallet} onTouchEnd={connectWallet} style={{ marginRight: '10px' }} className='windows-button'>Connect</Button>

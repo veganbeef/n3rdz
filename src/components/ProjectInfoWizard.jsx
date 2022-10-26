@@ -45,7 +45,7 @@ const ProjectInfoModal = () => {
 						<span style={{ paddingLeft: '8px' }}>Project Info</span>
 					</div>
 				</WindowHeader>
-				<WindowContent style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+				<WindowContent className='flex-column' style={{ justifyContent: 'space-between' }}>
 					<div style={{ display: 'flex', justifyContent: 'space-between' }}>
 						<Panel variant="well" style={{ height: '390px' }}>
 							<img src={hardwareWizard} alt='windows hardware wizard stock art' height="386" />

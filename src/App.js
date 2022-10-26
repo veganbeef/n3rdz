@@ -17,6 +17,7 @@ import BootLoader from './components/BootLoader';
 import NerdLoader from './components/NerdLoader';
 import ProjectInfoWizard from './components/ProjectInfoWizard';
 import LinksModal from './components/LinksModal';
+import MobileWarning from './components/MobileWarning';
 
 const GlobalStyles = createGlobalStyle`
   ${styleReset}
@@ -42,6 +43,7 @@ const App = () => {
     const [bootLoader, setBootLoader] = React.useState(true);
     const [nerdLoader, setNerdLoader] = React.useState(false);
     const [showStarField, toggleStarField] = React.useState(false);
+    const isMobile = window.innerWidth <= 768;
 
     const switchLoaders = () => {
         setBootLoader(false);
@@ -60,7 +62,8 @@ const App = () => {
                     <LinksModal />
                     <NerdcaveModal loading={bootLoader || nerdLoader} toggleStarField={toggleStarField} />
                     <WalletConnectorModal />
-                    <NerdLoader nerdLoader={nerdLoader}  />
+                    <NerdLoader nerdLoader={nerdLoader} />
+                    <MobileWarning isMobile={isMobile} loading={bootLoader || nerdLoader} />
                 </Desktop>
             </div>
         </ThemeProvider>

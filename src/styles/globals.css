@@ -64,6 +64,11 @@ a {
   align-items: center;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .flex-center-between {
   display: flex;
   align-items: center;

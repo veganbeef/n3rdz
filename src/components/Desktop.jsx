@@ -23,7 +23,7 @@ const Desktop = ({ children, loading, showStarField }) => {
 			{children}
 			{(!loading && showStarField) ? (
 				<div className='fixed-center' style={{ color: 'white', fontSize: 'x-large' }}>The journey has just begun...</div>
-			) : (<div className='fixed-center flex-center' style={{ flexDirection: 'column'}}>
+			) : (<div className='fixed-center flex-center flex-column'>
 				<div style={{ color: 'white', fontSize: 'x-large' }}>Mae g'ovannen, fellow N3RDS 🖖</div>
 				<div style={{ color: 'white', fontSize: 'large' }}>Click Start to begin.</div>
 			</div>)}
