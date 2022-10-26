@@ -88,9 +88,9 @@ const ProjectInfoModal = () => {
 					<div>
 						<Divider style={{ marginTop: '20px', marginBottom: '20px' }} />
 						<div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-							<Button disabled={currentPage === 0} onClick={() => setCurrentPage(currentPage - 1)} className='windows-button'>&lt;&ensp;Back</Button>
-							<Button disabled={currentPage === 2} onClick={() => setCurrentPage(currentPage + 1)} className='windows-button'>Next&ensp;&gt;</Button>
-							<Button onClick={closeModal} style={{ marginLeft: '10px' }} className='windows-button'>{currentPage === 2 ? 'Done' : 'Cancel'}</Button>
+							<Button disabled={currentPage === 0} onClick={() => setCurrentPage(currentPage - 1)} onTouchEnd={() => setCurrentPage(currentPage - 1)} className='windows-button'>&lt;&ensp;Back</Button>
+							<Button disabled={currentPage === 2} onClick={() => setCurrentPage(currentPage + 1)} onTouchEnd={() => setCurrentPage(currentPage + 1)} className='windows-button'>Next&ensp;&gt;</Button>
+							<Button onClick={closeModal} onTouchEnd={closeModal} style={{ marginLeft: '10px' }} className='windows-button'>{currentPage === 2 ? 'Done' : 'Cancel'}</Button>
 						</div>
 					</div>
 				</WindowContent>

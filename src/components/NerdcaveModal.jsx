@@ -47,11 +47,11 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 						<img src={appleDoorEmoji} width='21' alt='apple door emoji' />
 						<span style={{ paddingLeft: '4px' }}>The Nerdcave</span>
 					</div>
-					<Button onClick={closeModal}>x</Button>
+					<Button onClick={closeModal} onTouchEnd={closeModal}>x</Button>
 				</WindowHeader>
 				<WindowContent>
 					{!address ? (
-						<div><span onClick={openWalletConnector} className='blue-link'>Connect a wallet</span> containing N3RDS to see members-only content!</div>
+						<div><span onClick={openWalletConnector} onTouchEnd={openWalletConnector} className='blue-link'>Connect a wallet</span> containing N3RDS to see members-only content!</div>
 					) : (<>
 						{(ownedN3rds && ownedN3rds.length > 0) ? (<>
 							<div>Welcome back ser! All systems of the nerdcave are working at full capacity!</div>

@@ -28,7 +28,7 @@ const LinksModal = () => {
 						<img src={internetIcon} width='21' alt='windows internet icon' />
 						<span style={{ paddingLeft: '8px' }}>Links</span>
 					</div>
-					<Button onClick={closeModal}>x</Button>
+					<Button onClick={closeModal} onTouchEnd={closeModal}>x</Button>
 				</WindowHeader>
 				<WindowContent>
 					<Fieldset label='Twitter'>

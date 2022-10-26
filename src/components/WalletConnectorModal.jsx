@@ -72,15 +72,15 @@ const WalletConnectorModal = () => {
 						<img src={gearPanel} width='21' alt='windows settings icon' />
 						<span style={{ paddingLeft: '8px' }}>Wallet Connector</span>
 					</div>
-					<Button onClick={closeModal}>x</Button>
+					<Button onClick={closeModal} onTouchEnd={closeModal}>x</Button>
 				</WindowHeader>
 				<WindowContent>
 					<Fieldset label="Select wallet type">
 						<Select disabled={address} options={walletOptions} onChange={walletSelected} width={180} />
 					</Fieldset>
 					<div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '20px', marginBottom: '20px' }}>
-						<Button disabled={address} onClick={connectWallet} style={{ marginRight: '10px' }} className='windows-button'>Connect</Button>
-						<Button disabled={!address} onClick={disconnectWallet} className='windows-button'>Disconnect</Button>
+						<Button disabled={address} onClick={connectWallet} onTouchEnd={connectWallet} style={{ marginRight: '10px' }} className='windows-button'>Connect</Button>
+						<Button disabled={!address} onClick={disconnectWallet} onTouchEnd={disconnectWallet} className='windows-button'>Disconnect</Button>
 					</div>
 					<Fieldset label="Wallet information">
 						Address
