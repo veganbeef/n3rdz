@@ -50,9 +50,9 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 					<Button onClick={closeModal} onTouchEnd={closeModal}>x</Button>
 				</WindowHeader>
 				<WindowContent>
-					{!address ? (
+					{!address ? (<>
 						<div><span onClick={openWalletConnector} onTouchEnd={openWalletConnector} className='blue-link'>Connect a wallet</span> containing N3RDS to see members-only content!</div>
-					) : (<>
+					</>) : (<>
 						{(ownedN3rds && ownedN3rds.length > 0) ? (<>
 							<div>Welcome back ser! All systems of the nerdcave are working at full capacity!</div>
 							<Fieldset style={{ marginTop: '20px' }} label={`You own ${ownedN3rds.length} N3RDS!`}>
