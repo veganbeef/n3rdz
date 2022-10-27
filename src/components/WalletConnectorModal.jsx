@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { StoreContext } from '../Store';
-import { Button, Fieldset, Panel, Radio, Select, Window, WindowContent, WindowHeader } from 'react95';
+import { Button, Fieldset, Panel, Radio, Window, WindowContent, WindowHeader } from 'react95';
 import Draggable from 'react-draggable';
 import {
 	useAddress,

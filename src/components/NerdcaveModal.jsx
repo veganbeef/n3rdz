@@ -1,15 +1,31 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../Store';
 import { Button, Fieldset, Window, WindowContent, WindowHeader } from 'react95';
 import Draggable from 'react-draggable';
-import { useAddress, useContract, useOwnedNFTs } from '@thirdweb-dev/react';
+import { useAddress, useContract, useClaimNFT, useOwnedNFTs } from '@thirdweb-dev/react';
 import appleDoorEmoji from '../assets/appleDoorEmoji.png';
 
 const NerdcaveModal = ({ loading, toggleStarField }) => {
 	const [state, dispatch] = useContext(StoreContext);
+	const [hasMinted, setHasMinted] = useState(false);
 	const address = useAddress();
+
+	// n3rds
 	const { contract: n3rdsContract } = useContract('0xA29F6F5C7bE206425a28F8188784233E9D75dEee');
 	const { data: ownedN3rds, isLoading, error } = useOwnedNFTs(n3rdsContract, address);
+
+	//n3rdifier
+	const { contract: n3rdifierContract } = useContract('0x5Eaf5d74e8C3bDF12c75D4874b980c9AD9705E17');
+	const { mutate: claimNFT, isClaimLoading } = useClaimNFT(n3rdifierContract);
+	const mintTime = new Date('2022-10-27T18:00:00.000Z');
+	const now = new Date();
+
+
+	const mint = async () => {
+		console.log('minting');
+		claimNFT({to: address, quantity: 1});
+		setHasMinted(true);
+	}
 
 	const closeModal = () => {
 		dispatch({ type: 'SET_NERDCAVE_MODAL', payload: false });
@@ -51,7 +67,7 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 				</WindowHeader>
 				<WindowContent>
 					{!address ? (<>
-						<div><span onClick={openWalletConnector} onTouchEnd={openWalletConnector} className='blue-link'>Connect a wallet</span> containing N3RDS to see members-only content!</div>
+						<div><span onClick={openWalletConnector} onTouchEnd={openWalletConnector} className='blue-link'>Connect a wallet</span> to mint a n3rdifier!</div>
 					</>) : (<>
 						{(ownedN3rds && ownedN3rds.length > 0) ? (<>
 							<div>Welcome back ser! All systems of the nerdcave are working at full capacity!</div>
@@ -69,6 +85,18 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 								)
 							)
 						)}
+						<br />
+						{(now < mintTime) ? (
+							<div>Mint is at 2pm EST!</div>
+						) : (<>
+							{(process.env.PUBLIC_MINT || (ownedN3rds && ownedN3rds.length > 0)) ? (<>
+								<Fieldset label={'N3rdifier mint zone'}>
+									<div>You're eligible to mint a n3rdifier!</div>
+									<br />
+									<Button onClick={mint} disabled={isClaimLoading || hasMinted} style={{width: '100%'}}>Mint a N3rdifier</Button>
+								</Fieldset>
+							</>) : (<></>)}
+						</>)}
 					</>)}
 				</WindowContent>
 			</Window>

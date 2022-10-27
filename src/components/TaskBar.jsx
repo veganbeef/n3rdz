@@ -84,10 +84,10 @@ function TaskBar({ loading }) {
 									<img src={appleDoorEmoji} width='28' alt='apple door emoji' />
 									<span style={{paddingLeft: '1rem'}}>The Nerdcave</span>
 								</ListItem>
-								<ListItem disabled>
-									<img src={printerIcon} width='28' alt='windows printer icon' />
-									<span style={{paddingLeft: '1rem'}}>Mint</span>
-								</ListItem>
+								{/*<ListItem disabled>*/}
+								{/*	<img src={printerIcon} width='28' alt='windows printer icon' />*/}
+								{/*	<span style={{paddingLeft: '1rem'}}>Mint</span>*/}
+								{/*</ListItem>*/}
 								<ListItem onClick={() => menuClick('Wallet Connector')}>
 									<img src={gearPanel} width='28' alt='windows settings icon' />
 									<span style={{paddingLeft: '1rem'}}>Wallet Connector</span>
