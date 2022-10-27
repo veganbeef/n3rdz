@@ -8,6 +8,7 @@ import appleDoorEmoji from '../assets/appleDoorEmoji.png';
 const NerdcaveModal = ({ loading, toggleStarField }) => {
 	const [state, dispatch] = useContext(StoreContext);
 	const [hasMinted, setHasMinted] = useState(false);
+	const [mintQuantity, setMintQuantity] = useState(1);
 	const address = useAddress();
 
 	// n3rds
@@ -38,6 +39,20 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 	const openWalletConnector = () => {
 		dispatch({ type: 'BRING_MODAL_TO_FRONT', payload: 'Wallet Connector' });
 		dispatch({ type: 'SET_WALLET_CONNECTOR_MODAL', payload: true });
+	};
+
+	const addMintQuantity = () => {
+		const oldMintQuantity = mintQuantity;
+		if (oldMintQuantity < 2) {
+			setMintQuantity(oldMintQuantity + 1);
+		}
+	};
+
+	const subtractMintQuantity = () => {
+		const oldMintQuantity = mintQuantity;
+		if (oldMintQuantity > 1) {
+			setMintQuantity(oldMintQuantity - 1);
+		}
 	};
 
 	useEffect(() => {
@@ -94,7 +109,12 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 									<Fieldset label={'N3rdifier mint zone'}>
 										<div>You're eligible to mint a n3rdifier!</div>
 										<br />
-										<Button onClick={mint} disabled={isClaimLoading || hasMinted} style={{width: '100%'}}>Mint a N3rdifier</Button>
+										<div style={{display: 'flex', width: '100%'}}>
+											<Button onClick={subtractMintQuantity} disabled={mintQuantity < 2} style={{width: '25px', flexGrow: 0}}>-</Button>
+											<Button onClick={mint} disabled={isClaimLoading || hasMinted} style={{flexGrow:1}}>{mintQuantity === 1 ? ('Mint one N3rdifier!') : ('Mint two N3rdifiers!')}</Button>
+											<Button onClick={addMintQuantity} disabled={mintQuantity > 1} style={{width: '25px', flexGrow: 0}}>+</Button>
+										</div>
+
 									</Fieldset>
 								</>) : (<></>)}
 							</>)}
