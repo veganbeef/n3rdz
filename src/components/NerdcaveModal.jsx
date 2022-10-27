@@ -87,7 +87,7 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 						)}
 						<br />
 						{(now < mintTime) ? (
-							<div>Mint is at 2pm EST!</div>
+							<div>Mint is at {mintTime.toLocaleTimeString([], { timeZoneName:'short' })}</div>
 						) : (<>
 							{(process.env.PUBLIC_MINT || (ownedN3rds && ownedN3rds.length > 0)) ? (<>
 								<Fieldset label={'N3rdifier mint zone'}>
