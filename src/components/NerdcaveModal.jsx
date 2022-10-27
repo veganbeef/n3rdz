@@ -86,17 +86,20 @@ const NerdcaveModal = ({ loading, toggleStarField }) => {
 							)
 						)}
 						<br />
-						{(now < mintTime) ? (
-							<div>Mint is at {mintTime.toLocaleTimeString([], { timeZoneName:'short' })}</div>
-						) : (<>
-							{(process.env.PUBLIC_MINT || (ownedN3rds && ownedN3rds.length > 0)) ? (<>
-								<Fieldset label={'N3rdifier mint zone'}>
-									<div>You're eligible to mint a n3rdifier!</div>
-									<br />
-									<Button onClick={mint} disabled={isClaimLoading || hasMinted} style={{width: '100%'}}>Mint a N3rdifier</Button>
-								</Fieldset>
-							</>) : (<></>)}
+						{!process.env.STOP_MINT && (<>
+							{(now < mintTime) ? (
+								<div>Mint is at {mintTime.toLocaleTimeString([], { timeZoneName:'short' })}</div>
+							) : (<>
+								{(process.env.PUBLIC_MINT || (ownedN3rds && ownedN3rds.length > 0)) ? (<>
+									<Fieldset label={'N3rdifier mint zone'}>
+										<div>You're eligible to mint a n3rdifier!</div>
+										<br />
+										<Button onClick={mint} disabled={isClaimLoading || hasMinted} style={{width: '100%'}}>Mint a N3rdifier</Button>
+									</Fieldset>
+								</>) : (<></>)}
+							</>)}
 						</>)}
+
 					</>)}
 				</WindowContent>
 			</Window>
