@@ -18,6 +18,7 @@ import NerdLoader from './components/NerdLoader';
 import ProjectInfoWizard from './components/ProjectInfoWizard';
 import LinksModal from './components/LinksModal';
 import MobileWarning from './components/MobileWarning';
+import Burner from './components/Burner';
 
 const GlobalStyles = createGlobalStyle`
   ${styleReset}
@@ -54,18 +55,19 @@ const App = () => {
     return (<Store>
         <GlobalStyles/>
         <ThemeProvider theme={original}>
-            <BootLoader hidden={!bootLoader} switchLoaders={switchLoaders} />
-            <div style={bootLoader ? {display: 'none'} : {height: '100%', display: 'flex', flexDirection: 'column'}}>
-                <TaskBar loading={bootLoader || nerdLoader}/>
-                <Desktop loading={bootLoader || nerdLoader} showStarField={showStarField}>
-                    <ProjectInfoWizard />
-                    <LinksModal />
-                    <NerdcaveModal loading={bootLoader || nerdLoader} toggleStarField={toggleStarField} />
-                    <WalletConnectorModal />
-                    <NerdLoader nerdLoader={nerdLoader} />
-                    <MobileWarning isMobile={isMobile} loading={bootLoader || nerdLoader} />
-                </Desktop>
-            </div>
+            {/*<BootLoader hidden={!bootLoader} switchLoaders={switchLoaders} />*/}
+            {/*<div style={bootLoader ? {display: 'none'} : {height: '100%', display: 'flex', flexDirection: 'column'}}>*/}
+            {/*    <TaskBar loading={bootLoader || nerdLoader}/>*/}
+            {/*    <Desktop loading={bootLoader || nerdLoader} showStarField={showStarField}>*/}
+            {/*        <ProjectInfoWizard />*/}
+            {/*        <LinksModal />*/}
+            {/*        <NerdcaveModal loading={bootLoader || nerdLoader} toggleStarField={toggleStarField} />*/}
+            {/*        <WalletConnectorModal />*/}
+            {/*        <NerdLoader nerdLoader={nerdLoader} />*/}
+            {/*        <MobileWarning isMobile={isMobile} loading={bootLoader || nerdLoader} />*/}
+            {/*    </Desktop>*/}
+            {/*</div>*/}
+            <Burner />
         </ThemeProvider>
     </Store>);
 };
