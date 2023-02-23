@@ -35,6 +35,11 @@ a {
   src: local('nimbus'), url(../assets/NimbusRomNo9L-Med.otf) format('opentype');
 }
 
+@font-face {
+  font-family: 'roboto';
+  src: local('roboto'), url(../assets/Roboto-Medium.ttf) format('truetype');
+}
+
 .windows-button {
   width: 120px !important;
 }
